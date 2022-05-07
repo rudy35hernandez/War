@@ -4,6 +4,12 @@ html, body {
     background: url("img/table.png")
 }
 
-#draw-cards{
-    width: 100%
+#game{
+    height: 100vh
 }
+
+button{
+    background-color: #FFF100;
+    cursor: pointer;
+}
+
