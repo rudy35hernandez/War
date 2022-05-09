@@ -15,8 +15,8 @@ function drawCards(){
         .then(data => {
             console.log(data.cards)
             document.getElementById("cards").innerHTML = `
-                <img src=${data.cards[0].image} />
-                <img src=${data.cards[1].image} />
+                <img src=${data.cards[0].image} class="card"/>
+                <img src=${data.cards[1].image} class= "card"/>
             `
         })
 }

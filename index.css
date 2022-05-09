@@ -27,3 +27,9 @@ button.draw{
     font-size: 1.2em;
 }
 
+div.card-slot{
+    border: solid 1px black;
+    border-radius: 5px;
+    width: 125px;
+    height: 175px;
+}
