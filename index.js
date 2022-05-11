@@ -22,7 +22,9 @@ function drawCards(){
             for(let i = 0; i < cardsContainer.children.length; i++){
                 cardsContainer.children[i].innerHTML = `<img src=${data.cards[i].image} class="card">`
             }
-            declareWinner(data.cards[0], data.cards[1])
+            const winner = declareWinner(data.cards[0], data.cards[1])
+            result.innerHTML = winner
+
         })
 }
 
@@ -31,10 +33,10 @@ function declareWinner(cardOne, cardTwo){
     let totalTwo = wholeDeck.indexOf(cardTwo.value)
     
     if(totalOne > totalTwo){
-        return result.innerHTML = "Player One Wins"
+        return "Player One Wins"
     } else if(totalTwo > totalOne){
-        return result.innerHTML = "Player Two Wins"
+        return "Player Two Wins"
     } else {
-       return result.innerHTML = "Draw"
+       return "Draw"
     }
 }
