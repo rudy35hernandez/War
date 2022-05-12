@@ -18,6 +18,10 @@ button{
     border: none;
 }
 
+#result{
+    /* color: white */
+}
+
 button#new-deck{
     align-self: flex-start;
     padding: 5px
