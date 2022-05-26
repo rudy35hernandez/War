@@ -22,6 +22,21 @@ button{
     /* color: white */
 }
 
+.top{
+    display: flex;
+    align-self: flex-start;
+
+}
+
+div.top > p{
+    margin: 0;
+    margin-left: 10px;
+}
+
+div.top:first-child{
+    
+}
+
 button#new-deck{
     align-self: flex-start;
     padding: 5px

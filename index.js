@@ -3,6 +3,7 @@ const cardsContainer = document.getElementById("cards")
 document.getElementById("draw-cards").addEventListener("click", drawCards)
 document.getElementById("new-deck").addEventListener("click", handleClick)
 const result = document.getElementById("result")
+const cardsRemaining = document.getElementById("cards-remaining")
 const wholeDeck = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING", "ACE"]
 
 function handleClick() {
@@ -24,7 +25,7 @@ function drawCards(){
             }
             const winner = declareWinner(data.cards[0], data.cards[1])
             result.innerHTML = winner
-
+            cardsRemaining.innerHTML = `Cards remaining: ${data.remaining}`
         })
 }
 
