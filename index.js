@@ -12,6 +12,8 @@ function handleClick() {
         .then(data => {
             console.log(data)
             deckId = data.deck_id
+            
+            cardsRemaining.innerHTML = `Cards remaining: ${data.remaining}`
         })
 }
 
@@ -20,12 +22,12 @@ function drawCards(){
         .then(res => res.json())
         .then(data => {
             console.log(data.cards)
+            cardsRemaining.innerHTML = `Cards remaining: ${data.remaining}`
             for(let i = 0; i < cardsContainer.children.length; i++){
                 cardsContainer.children[i].innerHTML = `<img src=${data.cards[i].image} class="card">`
             }
             const winner = declareWinner(data.cards[0], data.cards[1])
             result.innerHTML = winner
-            cardsRemaining.innerHTML = `Cards remaining: ${data.remaining}`
         })
 }
 
