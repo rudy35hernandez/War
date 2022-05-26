@@ -43,6 +43,14 @@ function draw(){
             result.innerHTML = winner
             if(data.remaining <= 0){
                 drawCards.disabled = true
+                
+                if(userScore > computerScore){
+                    result.innerHTML = `You have won the game!`
+                } else if(computerScore > userScore){
+                    result.innerHTML = `Computer wins the game :(`
+                } else {
+                    result.innerHTML = `The game ends in a draw`
+                }
             }
 
         })
@@ -71,4 +79,6 @@ function reset(){
     cardsContainer.children[0].innerHTML = ""
     cardsContainer.children[1].innerHTML = ""
     result.innerHTML = "Game of War"
+    userScore = 0
+    computerScore = 0
 }
