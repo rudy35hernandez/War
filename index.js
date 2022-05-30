@@ -15,45 +15,41 @@ drawCards.addEventListener("click", draw)
 
 drawCards.disabled = true;
 
-function handleClick() {
+async function handleClick() {
     reset()
-    fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            deckId = data.deck_id
+    const res = await fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
+    const data = await res.json()
+    console.log(data)
+    deckId = data.deck_id
             
-            cardsRemaining.innerHTML = `Cards remaining: ${data.remaining}`
-            drawCards.removeAttribute("disabled")
+    cardsRemaining.innerHTML = `Cards remaining: ${data.remaining}`
+    drawCards.removeAttribute("disabled")
 
-        })
 }
 
-function draw(){
-    fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data.cards)
-            cardsRemaining.innerHTML = `Cards remaining: ${data.remaining}`
+async function draw(){
+    const res = await fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
+    const data = await res.json()
+    console.log(data.cards)
+    cardsRemaining.innerHTML = `Cards remaining: ${data.remaining}`
             
-            cardsContainer.children[0].innerHTML = `<img src=${data.cards[0].image} class="card">`
-            cardsContainer.children[1].innerHTML = `<img src=${data.cards[1].image} class="card">`
+    cardsContainer.children[0].innerHTML = `<img src=${data.cards[0].image} class="card">`
+    cardsContainer.children[1].innerHTML = `<img src=${data.cards[1].image} class="card">`
 
-            const winner = declareWinner(data.cards[0], data.cards[1])
-            result.innerHTML = winner
-            if(data.remaining <= 0){
-                drawCards.disabled = true
+    const winner = declareWinner(data.cards[0], data.cards[1])
+    result.innerHTML = winner
+
+    if(data.remaining <= 0){
+        drawCards.disabled = true
                 
-                if(userScore > computerScore){
-                    result.innerHTML = `You have won the game!`
-                } else if(computerScore > userScore){
-                    result.innerHTML = `Computer wins the game :(`
-                } else {
-                    result.innerHTML = `The game ends in a draw`
-                }
-            }
-
-        })
+        if(userScore > computerScore){
+            result.innerHTML = `You have won the game!`
+        } else if(computerScore > userScore){
+            result.innerHTML = `Computer wins the game :(`
+        } else {
+            result.innerHTML = `The game ends in a draw`
+        }
+    }
 }
 
 function declareWinner(cardOne, cardTwo){
